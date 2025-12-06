@@ -1,0 +1,27 @@
+from src.data_loader import AnimeDataLoader
+from utils.logger import get_logger
+from utils.custom_exception import CustomException
+from src.vector_store import VectorStore
+
+logger = get_logger(__name__)
+
+def main():
+    try:
+        logger.info("Starting to build pipeline...")
+        loader = AnimeDataLoader("data/anime_with_synopsis.csv" , "data/anime_updated.csv")
+        processed_csv = loader.load_and_process()
+
+        logger.info("Data  loaded and processed...")
+
+        vector_builder = VectorStore(processed_csv)
+        vector_builder.build_and_save_vector_store()
+        logger.info("Vector store built successfully....")
+
+        logger.info("Pipeline built successfully....")
+    except Exception as e:
+        logger.error(f"Failed to execute pipeline {str(e)}")
+        raise CustomException("Error during pipeline " , e)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,16 @@
+[project]
+name = "anime-recommander"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain",
+    "langchain-google-genai",
+    "chromadb",
+    "python-dotenv",
+    "pandas",
+    "streamlit",
+    "langchain-chroma>=1.0.0",
+    "langchain-community>=0.4.1",
+]
