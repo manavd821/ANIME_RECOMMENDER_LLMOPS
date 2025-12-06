@@ -22,4 +22,4 @@ RUN uv sync
 EXPOSE 8501
 
 # Run the app 
-CMD ["python", "-m" ,"streamlit", "run", "app/app.py", "--server.port=8501", "--server.address=0.0.0.0","--server.headless=true"]
+CMD ["uv", "run", "streamlit", "run", "app/app.py", "--server.port=8501", "--server.address=0.0.0.0", "--server.headless=true"]
